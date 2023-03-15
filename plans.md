@@ -29,7 +29,12 @@
 
 7. DONE Write models designed earlier
 
-8. Start with a user sign-up form:
+8. Write controllers:
+    1. DONE Index controller
+    2. User controllers
+    3. Message controllers
+
+9. Start with a user sign-up form:
     1. Sanitize and validate form fields
     2. Secure passwords with bcrypt (bcrypt.hash in the context of sign-up)
         - Just install bcryptjs
@@ -37,15 +42,15 @@
     4. An "is admin" checkbox (acceptable for now)
     5. Don't create a new user if one with the given username already exists (i.e. search for an existing user in the database first)
 
-9. Add a page for users to join the club by (while logged in, of course) entering a secret passcode.
+10. Add a page for users to join the club by (while logged in, of course) entering a secret passcode.
     - Submission might make a POST request to either make the user's userStatus "membership" in the database (make sure to retain the user's ObjectID) if the passcode is correct and the user is not an admin, or re-render the view the same way but with the addition of a message stating passcode incorrectness/the user already being an admin
 
-10. Create a login-form using passport.js (might want to do this before the passcode-entering-page step so that said step may be tested, not entirely sure though)
+11. Create a login-form using passport.js (might want to do this before the passcode-entering-page step so that said step may be tested, not entirely sure though)
 
-11. A logged-in user should have a link to "Create a new message", taking them to a new-message form view
+12. A logged-in user should have a link to "Create a new message", taking them to a new-message form view
 
-12. Display all messages on the home page for all to see, but showing the author and date of the authorship to other members/admins only (e.g. populate these fields for user docs referred to by message docs for members/admins but not for non-members/non-admins)
+13. Display all messages on the home page for all to see, but showing the author and date of the authorship to other members/admins only (e.g. populate these fields for user docs referred to by message docs for members/admins but not for non-members/non-admins)
 
-13. Those who are admin can (in addition to member perks):
+14. Those who are admin can (in addition to member perks):
     1. See the delete-button (alongside each message, maybe--would make a POST request, I guess)
     2. Delete messages (via the delete-button)
