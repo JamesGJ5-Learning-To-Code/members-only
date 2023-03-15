@@ -5,7 +5,7 @@
 2. Users will have a:
     1. Full-name (forename and last name)
         - Maybe employ a getter here, maybe look back to a previous lesson where this is mentioned in relation to MongoDB/Mongoose. For example, might want to store forename and last name in two separate fields but be able to access them via the full-name as a whole.
-    2. Username (can just use email)
+    2. Username (doesn't have to just be email)
     3. Password
     4. Membership-status (probably just distinguishing between active and inactive users)
         - Only members can see who authored messages and when. Non-members cannot.
