@@ -31,7 +31,7 @@
 
 8. Write controllers:
     1. DONE Index controller
-    2. User controllers
+    2. DONE User controllers
     3. Message controllers
 
 9. Start with a user sign-up form:
