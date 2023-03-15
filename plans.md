@@ -36,7 +36,7 @@
     5. Don't create a new user if one with the given username already exists (i.e. search for an existing user in the database first)
 
 9. Add a page for users to join the club by (while logged in, of course) entering a secret passcode.
-    - Submission might make a POST request to either make the user's mermbership-status active in the database (make sure to retain the user's ObjectID) if the passcode is correct or re-render the view the same way but with the addition of a message stating passcode incorrectness
+    - Submission might make a POST request to either make the user's userStatus "membership" in the database (make sure to retain the user's ObjectID) if the passcode is correct and the user is not an admin, or re-render the view the same way but with the addition of a message stating passcode incorrectness/the user already being an admin
 
 10. Create a login-form using passport.js (might want to do this before the passcode-entering-page step so that said step may be tested, not entirely sure though)
 
