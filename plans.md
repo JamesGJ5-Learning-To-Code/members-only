@@ -23,9 +23,9 @@
 
 5. DONE Set up database on Mongo
 
-6. Generate project skeleton
+6. DONE Generate project skeleton
     - DONE Initialise express app
-    - Connect to database in app.js, importing connection string from a secure configuration
+    - DONE Connect to database in app.js, importing connection string from a secure configuration
 
 7. Write models designed earlier
 
