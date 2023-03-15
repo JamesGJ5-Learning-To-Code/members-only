@@ -21,7 +21,7 @@
     3. Some text
     4. Record of who created each message (probably via reference by ID to the MongoDB document of the user in question, giving access to their full-name, for example)
 
-5. Set up database on Mongo
+5. DONE Set up database on Mongo
 
 6. Generate project skeleton
 
