@@ -1,3 +1,5 @@
+// TODO: make formatting consistent across each file in this directory
+
 require("dotenv").config();
 var createError = require('http-errors');
 var express = require('express');
@@ -13,6 +15,7 @@ async function main() {
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const membersOnlyRouter = require("./routes/membersOnly");
 
 var app = express();
 
@@ -28,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use("/membersOnly", membersOnlyRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
