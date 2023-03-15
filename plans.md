@@ -7,9 +7,10 @@
         - Maybe employ a getter here, maybe look back to a previous lesson where this is mentioned in relation to MongoDB/Mongoose. For example, might want to store forename and last name in two separate fields but be able to access them via the full-name as a whole.
     2. Username (doesn't have to just be email)
     3. Password
-    4. Membership-status (probably just distinguishing between active and inactive users)
-        - Only members can see who authored messages and when. Non-members cannot.
-    5. A field called Admin (either true or false) specifying whether or not a user has the ability to delete messages.
+    4. User status, which can either be:
+        - "basic", cannot see authorship details
+        - "member", can see authorship details
+        - "admin", can see authorship details and delete messages
 
 3. ALL users should be able to create messages.
 
@@ -32,7 +33,6 @@
         - Just install bcryptjs
     3. Add a confirmPassword field to sign-up form and validate it with a custom validator (https://express-validator.github.io/docs/validation-chain-api/)
     4. An "is admin" checkbox (acceptable for now)
-        - Being an admin also makes a user a member.
     5. Don't create a new user if one with the given username already exists (i.e. search for an existing user in the database first)
 
 9. Add a page for users to join the club by (while logged in, of course) entering a secret passcode.
@@ -42,8 +42,8 @@
 
 11. A logged-in user should have a link to "Create a new message", taking them to a new-message form view
 
-12. Display all messages on the home page for all to see, but showing the author and date of the authorship to other members only (e.g. populate these fields for user docs referred to by message docs for members but not for non-members)
+12. Display all messages on the home page for all to see, but showing the author and date of the authorship to other members/admins only (e.g. populate these fields for user docs referred to by message docs for members/admins but not for non-members/non-admins)
 
-13. Those who are admin can (in addition to already being a member):
+13. Those who are admin can (in addition to member perks):
     1. See the delete-button (alongside each message, maybe--would make a POST request, I guess)
     2. Delete messages (via the delete-button)
