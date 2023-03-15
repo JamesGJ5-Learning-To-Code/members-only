@@ -9,7 +9,7 @@
     3. Password
     4. Membership-status (probably just distinguishing between active and inactive users)
         - Only members can see who authored messages and when. Non-members cannot.
-    5. An optional field called Admin (either true or false) for the ability to delete messages.
+    5. A field called Admin (either true or false) specifying whether or not a user has the ability to delete messages.
 
 3. ALL users should be able to create messages.
 
