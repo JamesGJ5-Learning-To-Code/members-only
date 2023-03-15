@@ -1,8 +1,8 @@
 # Suggestions from TOP
 
-1. First think of database models necessary
+1. DONE First think of database models necessary
 
-2. Users will have a:
+2. CONSIDERED Users will have a:
     1. Full-name (forename and last name)
         - Maybe employ a getter here, maybe look back to a previous lesson where this is mentioned in relation to MongoDB/Mongoose. For example, might want to store forename and last name in two separate fields but be able to access them via the full-name as a whole.
     2. Username (doesn't have to just be email)
@@ -12,9 +12,9 @@
         - "member", can see authorship details
         - "admin", can see authorship details and delete messages
 
-3. ALL users should be able to create messages.
+3. CONSIDERED All users should be able to create messages.
 
-4. Messages have a:
+4. CONSIDERED Messages have a:
     1. Title
     2. Timestamp
         - See https://mongoosejs.com/docs/timestamps.html, particularly for 'createdAt' rather than 'updatedAt' (since probably won't be giving users the option to update messages in the first iteration of this project)
