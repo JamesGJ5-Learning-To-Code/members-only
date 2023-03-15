@@ -4,6 +4,9 @@ const indexGet = require("../controllers/indexGet");
 const userController = require("../controllers/userControllers");
 const messageController = require("../controllers/messageControllers");
 
+// TODO: Consider doing the passport stuff in here, since it is specific to this portion of 
+// routes only
+
 router.get("/", messageController.messageListGet);
 
 router.get("/sign-up", userController.userCreateGet);
