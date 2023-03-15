@@ -27,7 +27,7 @@
     - DONE Initialise express app
     - DONE Connect to database in app.js, importing connection string from a secure configuration
 
-7. Write models designed earlier
+7. DONE Write models designed earlier
 
 8. Start with a user sign-up form:
     1. Sanitize and validate form fields
