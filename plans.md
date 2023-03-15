@@ -1,0 +1,49 @@
+# Suggestions from TOP
+
+1. First think of database models necessary
+
+2. Users will have a:
+    1. Full-name (first and last)
+        - Maybe employ a getter here, maybe look back to a previous lesson where this is mentioned in relation to MongoDB/Mongoose. For example, might want to store first name (or forename) and last name in two separate fields but be able to access them via the full-name as a whole.
+    2. Username (can just use email)
+    3. Password
+    4. Membership-status (probably just distinguishing between active and inactive users)
+        - Only members can see who authored messages and when. Non-members cannot.
+    5. An optional field called Admin (either true or false) for the ability to delete messages.
+
+3. ALL users should be able to create messages.
+
+4. Messages have a:
+    1. Title
+    2. Timestamp
+        - See https://mongoosejs.com/docs/timestamps.html, particularly for 'createdAt' rather than 'updatedAt' (since probably won't be giving users the option to update messages in the first iteration of this project)
+    3. Some text
+    4. Record of who created each message (probably via reference by ID to the MongoDB document of the user in question, giving access to their full-name, for example)
+
+5. Set up database on Mongo
+
+6. Generate project skeleton
+
+7. Write models designed earlier
+
+8. Start with a user sign-up form:
+    1. Sanitize and validate form fields
+    2. Secure passwords with bcrypt (bcrypt.hash in the context of sign-up)
+        - Just install bcryptjs
+    3. Add a confirmPassword field to sign-up form and validate it with a custom validator (https://express-validator.github.io/docs/validation-chain-api/)
+    4. An "is admin" checkbox (acceptable for now)
+        - Being an admin also makes a user a member.
+    5. Don't create a new user if one with the given username already exists (i.e. search for an existing user in the database first)
+
+9. Add a page for users to join the club by (while logged in, of course) entering a secret passcode.
+    - Submission might make a POST request to either make the user's mermbership-status active in the database (make sure to retain the user's ObjectID) if the passcode is correct or re-render the view the same way but with the addition of a message stating passcode incorrectness
+
+10. Create a login-form using passport.js (might want to do this before the passcode-entering-page step so that said step may be tested, not entirely sure though)
+
+11. A logged-in user should have a link to "Create a new message", taking them to a new-message form view
+
+12. Display all messages on the home page for all to see, but showing the author and date of the authorship to other members only (e.g. populate these fields for user docs referred to by message docs for members but not for non-members)
+
+13. Those who are admin can (in addition to already being a member):
+    1. See the delete-button (alongside each message, maybe--would make a POST request, I guess)
+    2. Delete messages (via the delete-button)
