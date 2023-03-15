@@ -26,11 +26,11 @@ const UserSchema = new Schema({
     },
 });
 
-UserSchema.virtual("canSeeAuthorshipDetails").get(() => {
+UserSchema.virtual("canSeeAuthorshipDetails").get(function() {
     return this.status === "member" || this.status === "admin";
 });
 
-UserSchema.virtual("fullName").get(() => {
+UserSchema.virtual("fullName").get(function() {
     return `${this.forename} ${this.lastName}`;
 });
 
