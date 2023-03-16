@@ -21,10 +21,10 @@ passport.use(new LocalStrategy(userController.verifyLoginAttempt));
 passport.serializeUser(userController.userSerializationCallback);
 passport.deserializeUser(userController.userDesirializationCallback);
 
-app.use(passport.initialize());
-app.use(passport.session());
+router.use(passport.initialize());
+router.use(passport.session());
 
-app.use((req, res, next) => {
+router.use((req, res, next) => {
     res.locals.currentUser = req.user;
     next();
 });
