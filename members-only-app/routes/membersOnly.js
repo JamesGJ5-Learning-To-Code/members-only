@@ -7,7 +7,7 @@ const messageController = require("../controllers/messageControllers");
 // TODO: Consider doing the passport stuff in here, since it is specific to this portion of 
 // routes only
 
-router.get("/", messageController.messageListGet);
+router.get("/", indexGet);
 
 router.get("/sign-up", userController.userCreateGet);
 router.post("/sign-up", userController.userCreatePost);
