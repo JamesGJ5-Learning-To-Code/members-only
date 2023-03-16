@@ -21,6 +21,8 @@ passport.use(new LocalStrategy(userController.verifyLoginAttempt));
 passport.serializeUser(userController.userSerializationCallback);
 passport.deserializeUser(userController.userDesirializationCallback);
 
+app.use(passport.initialize());
+
 router.get("/", indexGet);
 
 router.get("/sign-up", userController.userCreateGet);
