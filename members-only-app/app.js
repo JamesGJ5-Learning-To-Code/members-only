@@ -13,6 +13,7 @@ async function main() {
   await mongoose.connect(process.env.MONGO_DB_CONNECTION_STRING);
 }
 
+// TODO: consider removing the index route and making membersOnly the base route instead
 var indexRouter = require('./routes/index');
 const membersOnlyRouter = require("./routes/membersOnly");
 
