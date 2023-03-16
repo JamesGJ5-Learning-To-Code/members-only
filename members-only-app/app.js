@@ -13,8 +13,6 @@ async function main() {
   await mongoose.connect(process.env.MONGO_DB_CONNECTION_STRING);
 }
 
-// TODO: consider removing the index route and making membersOnly the base route instead
-var indexRouter = require('./routes/index');
 const membersOnlyRouter = require("./routes/membersOnly");
 
 var app = express();
@@ -29,8 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use("/members-only", membersOnlyRouter);
+app.use("/", membersOnlyRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
