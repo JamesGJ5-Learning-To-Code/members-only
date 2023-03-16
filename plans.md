@@ -34,7 +34,7 @@
     2. DONE User controllers
     3. DONE Message controllers
 
-9. Write authentication stuff
+9. DONE Write skeleton for authentication and routes
 
 10. Start with a user sign-up form:
     1. Sanitize and validate form fields
