@@ -8,12 +8,20 @@ exports.userCreatePost = (req, res, next) => {
     res.send("TODO: implement userCreatePost")
 };
 
-// TODO: consider whether this is really a controller and if it should really be in this 
-// file
-// NOTE: 'done' is a parameter necessitated by the LocalStrategy constructor in 
+// TODO: consider whether the below three functions are really controllers and if they 
+// should really be in this file
+// NOTE: 'done' is a parameter necessitated by the passport middleware in 
 // ../routes/membersOnly.js
 exports.verifyLoginAttempt = (username, password, done) => {
     // TODO: implement verifyUserDetails
+};
+
+exports.userSerializationCallback = (userDoc, done) => {
+    // TODO: implement userSerializationCallback
+};
+
+exports.userDesirializationCallback = (userDocId, done) => {
+    // TODO: implement userDeserializationCallback
 };
 
 exports.userStatusMemberGet = (req, res, next) => {
