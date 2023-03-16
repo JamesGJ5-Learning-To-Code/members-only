@@ -1,7 +1,7 @@
 const User = require("../models/user");
 
 exports.userCreateGet = (req, res, next) => {
-    res.send("TODO: implement userCreateGet")
+    res.render("userSignupForm");
 };
 
 exports.userCreatePost = (req, res, next) => {
