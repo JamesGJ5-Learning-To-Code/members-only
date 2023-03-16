@@ -22,6 +22,7 @@ passport.serializeUser(userController.userSerializationCallback);
 passport.deserializeUser(userController.userDesirializationCallback);
 
 app.use(passport.initialize());
+app.use(passport.session());
 
 router.get("/", indexGet);
 
