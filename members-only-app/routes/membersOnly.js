@@ -4,6 +4,8 @@ const indexGet = require("../controllers/indexGet");
 const userController = require("../controllers/userControllers");
 const messageController = require("../controllers/messageControllers");
 const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 
 // TODO: Consider doing the passport stuff in here, since it is specific to this portion of 
 // routes only
@@ -13,6 +15,8 @@ router.use(session({
     resave: false,
     saveUninitialized: true,
 }));
+
+passport.use(new LocalStrategy(userController.verifyLoginAttempt));
 
 router.get("/", indexGet);
 
