@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const indexGet = require("../controllers/indexGet");
-const userController = require("../controllers/userControllers");
-const messageController = require("../controllers/messageControllers");
+const userControllers = require("../controllers/userControllers");
+const messageControllers = require("../controllers/messageControllers");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
@@ -16,10 +16,10 @@ router.use(session({
     saveUninitialized: true,
 }));
 
-passport.use(new LocalStrategy(userController.verifyLoginAttempt));
+passport.use(new LocalStrategy(userControllers.verifyLoginAttempt));
 
-passport.serializeUser(userController.userSerializationCallback);
-passport.deserializeUser(userController.userDesirializationCallback);
+passport.serializeUser(userControllers.userSerializationCallback);
+passport.deserializeUser(userControllers.userDesirializationCallback);
 
 router.use(passport.initialize());
 router.use(passport.session());
@@ -31,15 +31,15 @@ router.use((req, res, next) => {
 
 router.get("/", indexGet);
 
-router.get("/sign-up", userController.userCreateGet);
-router.post("/sign-up", userController.userCreatePost);
+router.get("/sign-up", userControllers.userCreateGet);
+router.post("/sign-up", userControllers.userCreatePost);
 
-router.get("/become-a-member", userController.userStatusMemberGet);
-router.post("/become-a-member", userController.userStatusMemberPost);
+router.get("/become-a-member", userControllers.userStatusMemberGet);
+router.post("/become-a-member", userControllers.userStatusMemberPost);
 
-router.get("/create-message", messageController.messageCreateGet);
-router.post("/create-message", messageController.messageCreatePost);
+router.get("/create-message", messageControllers.messageCreateGet);
+router.post("/create-message", messageControllers.messageCreatePost);
 
-router.post("/delete-message", messageController.messageDeletePost);
+router.post("/delete-message", messageControllers.messageDeletePost);
 
 module.exports = router;
