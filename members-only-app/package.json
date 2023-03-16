@@ -8,6 +8,7 @@
     "serverstart": "DEBUG=members-only-app:* npm run devstart"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "debug": "~2.6.9",
     "dotenv": "^16.0.3",
     "express": "~4.16.1",
