@@ -29,7 +29,7 @@
 
 7. DONE Write models designed earlier
 
-8. Write controllers:
+8. DONE Write dummy controllers:
     1. DONE Index controller
     2. DONE User controllers
     3. DONE Message controllers
