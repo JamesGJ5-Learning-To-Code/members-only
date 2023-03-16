@@ -24,6 +24,11 @@ passport.deserializeUser(userController.userDesirializationCallback);
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    next();
+});
+
 router.get("/", indexGet);
 
 router.get("/sign-up", userController.userCreateGet);
