@@ -14,7 +14,6 @@ async function main() {
 }
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 const membersOnlyRouter = require("./routes/membersOnly");
 
 var app = express();
@@ -30,7 +29,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use("/members-only", membersOnlyRouter);
 
 // catch 404 and forward to error handler
