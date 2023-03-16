@@ -8,6 +8,10 @@ exports.userCreatePost = (req, res, next) => {
     res.send("TODO: implement userCreatePost")
 };
 
+exports.userLoginGet = (req, res, next) => {
+    res.send("TODO: implement userLoginGet");
+};
+
 // TODO: consider whether the below three functions are really controllers and if they 
 // should really be in this file
 // NOTE: 'done' is a parameter necessitated by the passport middleware in 

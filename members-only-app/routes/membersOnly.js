@@ -34,6 +34,16 @@ router.get("/", indexGet);
 router.get("/sign-up", userControllers.userCreateGet);
 router.post("/sign-up", userControllers.userCreatePost);
 
+router.get("/log-in", userControllers.userLoginGet);
+
+// router.post(
+//     "/log-in",
+//     passport.authenticate("local", {
+//         successRedirect: "/",
+//         failureRedirect: "/log-in"
+//     })
+// )
+
 router.get("/become-a-member", userControllers.userStatusMemberGet);
 router.post("/become-a-member", userControllers.userStatusMemberPost);
 
