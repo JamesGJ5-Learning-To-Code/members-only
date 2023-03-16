@@ -47,7 +47,7 @@
 11. Create a login-form using passport.js (might want to do this before the passcode-entering-page step so that said step may be tested, not entirely sure though)
 
 12. Add a page for users to join the club by (while logged in, of course) entering a secret passcode.
-    - Submission might make a POST request to either make the user's userStatus "member" in the database (make sure to retain the user's ObjectID) if the passcode is correct and the user is not an admin, or re-render the view the same way but with the addition of a message stating passcode incorrectness/the user already being an admin
+    - Submission might make a POST request to either make the user's userStatus "member" in the database (make sure to retain the user's ObjectID) if the passcode is correct and the user is not an admin or not logged in, or re-render the view the same way but with the addition of a message stating passcode incorrectness/the user already being an admin/the user not being logged in
 
 13. A logged-in user should have a link to "Create a new message", taking them to a new-message form view
 
