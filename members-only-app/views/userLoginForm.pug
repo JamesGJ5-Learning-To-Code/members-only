@@ -12,13 +12,9 @@ block content
 
         div 
             label(for="password") *Password: 
-            input(id="password", type="text", name="password", required,
+            input(id="password", type="password", name="password", required,
                 value=(persistedRequestBody ? persistedRequestBody.password : ""))
 
         button Submit
 
-    if errorArray 
-
-        each error in errorArray 
-
-            p=error.msg
+    p=error
