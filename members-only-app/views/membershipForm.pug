@@ -1,0 +1,24 @@
+extends layout 
+
+block content
+    h1 Become a Member:
+
+    if !currentUser 
+
+        p Please log in before trying to become a member
+
+    else
+
+        form(action="", method="post") 
+
+            div 
+                label(for="passcode") *Enter the secret passcode: 
+                input(id="passcode", type="password", name="passcode", required)
+
+            button Submit
+
+    if errorArray 
+        
+        each error in errorArray
+            
+            p=error.msg
