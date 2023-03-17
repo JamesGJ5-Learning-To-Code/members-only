@@ -55,8 +55,8 @@ exports.userCreatePost = [
             });
         }
         try {
-            const foundUserDoc = await User.findOne({ username: req.body.username })
-            if (foundUserDoc) {
+            const founduser = await User.findOne({ username: req.body.username })
+            if (founduser) {
                 return res.render("userSignupForm", {
                     persistedRequestBody: req.body,
                     errorArray: [{msg: "Username taken"}]
@@ -111,18 +111,18 @@ exports.verifyLoginAttempt = async (username, password, done) => {
         password: password,
     };
     try {
-        const userDoc = await User.findOne({ username: username });
-        if (!userDoc) {
+        const user = await User.findOne({ username: username });
+        if (!user) {
             return done(null, false, {
                 persistedRequestBody,
                 message: "Incorrect username",
             });
         }
-        bcrypt.compare(password, userDoc.password, (err, res) => {
+        bcrypt.compare(password, user.password, (err, res) => {
             if (err) {
                 throw err;
             } else if (res) {
-                return done(null, userDoc);
+                return done(null, user);
             }
             return done(null, false, {
                 persistedRequestBody,
@@ -134,21 +134,21 @@ exports.verifyLoginAttempt = async (username, password, done) => {
     };
 };
 
-exports.userSerializationCallback = (userDoc, done) => {
-    done(null, userDoc.id);
+exports.userSerializationCallback = (user, done) => {
+    done(null, user.id);
 };
 
-exports.userDesirializationCallback = async (userDocId, done) => {
+exports.userDesirializationCallback = async (userId, done) => {
     try {
-        const userDoc = await User.findById(userDocId);
-        done(null, userDoc);
+        const user = await User.findById(userId);
+        done(null, user);
     } catch(err) {
         done(err);
     };
 };
 
 exports.userStatusMemberGet = (req, res, next) => {
-    res.send("TODO: implement userStatusMemberGet")
+    res.render("membershipForm");
 };
 
 exports.userStatusMemberPost = (req, res, next) => {
