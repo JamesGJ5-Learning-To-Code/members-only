@@ -37,6 +37,11 @@ block content
             input(id="confirmpassword", type="password", name="confirmpassword", required,
                 value=(persistedRequestBody ? persistedRequestBody.confirmpassword : ""))
 
+        div 
+            label(for="isadmin") Check to become an admin: 
+            input(id="isadmin", type="checkbox", name="isadmin", 
+                checked=!!persistedRequestBody.isadmin)
+
         button Submit
 
     if errorArray
