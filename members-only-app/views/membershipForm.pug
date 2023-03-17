@@ -7,6 +7,10 @@ block content
 
         p Please log in before trying to become a member
 
+    else if currentUser.status === "admin"
+
+        p You don't need to become a member, you're already an admin!
+
     else
 
         form(action="", method="post") 
