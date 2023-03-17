@@ -15,6 +15,11 @@ router.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
+    cookie: {
+        // TODO: consider setting secure to true
+        secure: false,
+        maxAge: 3600000,
+    },
 }));
 
 passport.use(new LocalStrategy(userControllers.verifyLoginAttempt));
