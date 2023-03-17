@@ -9,16 +9,28 @@ block content
 
     form(action="", method="POST") 
 
+        //- TODO: instead of the conditional statement below, consider explicitly setting 
+        //- value to persistedRequestBody.username for example, since if it is undefined then 
+        //- the value shouldn't appear in the field anyway I think
         div 
             label(for="username") *Username: 
-            input(id="username", type="text", name="username", required)
+            input(id="username", type="text", name="username", required, 
+                value=(persistedRequestBody ? persistedRequestBody.username : ""))
 
         div 
             label(for="username") *Password: 
-            input(id="password", type="password", name="password", required)
+            input(id="password", type="password", name="password", required,
+                value=(persistedRequestBody ? persistedRequestBody.password : ""))
 
         div 
             label(for="confirmpassword") *Confirm Password: 
-            input(id="confirmpassword", type="password", name="confirmpassword", required)
+            input(id="confirmpassword", type="password", name="confirmpassword", required,
+                value=(persistedRequestBody ? persistedRequestBody.confirmpassword : ""))
 
         button Submit
+
+    if errorArray
+        
+        each error in errorArray 
+
+            p=error.msg
