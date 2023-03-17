@@ -36,13 +36,13 @@
 
 9. DONE Write skeleton for authentication and routes
 
-10. Start with a user sign-up form:
-    1. Sanitize and validate form fields
-    2. Secure passwords with bcrypt (bcrypt.hash in the context of sign-up)
-        - Just install bcryptjs
-    3. Add a confirmPassword field to sign-up form and validate it with a custom validator (https://express-validator.github.io/docs/validation-chain-api/)
-    4. An "is admin" checkbox (acceptable for now)
-    5. Don't create a new user if one with the given username already exists (i.e. search for an existing user in the database first)
+10. DONE Start with a user sign-up form:
+    1. DONE Sanitize and validate form fields
+    2. DONE Secure passwords with bcrypt (bcrypt.hash in the context of sign-up)
+        - DONE Just install bcryptjs
+    3. DONE Add a confirmPassword field to sign-up form and validate it with a custom validator (https://express-validator.github.io/docs/validation-chain-api/)
+    4. DONE An "is admin" checkbox (acceptable for now)
+    5. DONE Don't create a new user if one with the given username already exists (i.e. search for an existing user in the database first)
 
 11. Create a login-form using passport.js (might want to do this before the passcode-entering-page step so that said step may be tested, not entirely sure though)
 
