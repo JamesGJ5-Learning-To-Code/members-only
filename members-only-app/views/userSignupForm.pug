@@ -40,7 +40,7 @@ block content
         div 
             label(for="isadmin") Check to become an admin: 
             input(id="isadmin", type="checkbox", name="isadmin", 
-                checked=!!persistedRequestBody.isadmin)
+                checked=(persistedRequestBody && !!persistedRequestBody.isadmin))
 
         button Submit
 
