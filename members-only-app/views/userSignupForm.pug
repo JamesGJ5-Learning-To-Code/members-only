@@ -13,6 +13,16 @@ block content
         //- value to persistedRequestBody.username for example, since if it is undefined then 
         //- the value shouldn't appear in the field anyway I think
         div 
+            label(for="forename") *Forename: 
+            input(id="forename", type="text", name="forename", required, 
+                value=(persistedRequestBody ? persistedRequestBody.forename : ""))
+
+        div 
+            label(for="lastname") *Last name: 
+            input(id="lastname", type="text", name="lastname", required, 
+                value=(persistedRequestBody ? persistedRequestBody.lastname : ""))
+
+        div 
             label(for="username") *Username: 
             input(id="username", type="text", name="username", required, 
                 value=(persistedRequestBody ? persistedRequestBody.username : ""))
