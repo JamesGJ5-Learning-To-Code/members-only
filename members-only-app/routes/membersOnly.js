@@ -37,23 +37,7 @@ router.post("/sign-up", userControllers.userCreatePost);
 
 router.get("/log-in", userControllers.userLoginGet);
 // TODO: consider refactoring the below callback into userControllers.js
-router.post(
-    "/log-in",
-    body("username").trim().escape(),
-    body("password").escape(),
-    (req, res, next) => {
-    passport.authenticate("local", (err, user, info) => {
-        if (err) {
-            return next(err)
-        } else if (!user) {
-            return res.render("userLoginForm", {
-                persistedRequestBody: info.persistedRequestBody,
-                error: info.message
-            });
-        }
-        res.redirect("/");
-    })(req, res, next);
-});
+router.post("/log-in", userControllers.userLoginPost);
 
 router.get("/become-a-member", userControllers.userStatusMemberGet);
 router.post("/become-a-member", userControllers.userStatusMemberPost);

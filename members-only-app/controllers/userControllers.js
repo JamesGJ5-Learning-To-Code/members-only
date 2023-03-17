@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
+const passport = require("passport");
 
 exports.userCreateGet = (req, res, next) => {
     res.render("userSignupForm");
@@ -80,6 +81,24 @@ exports.userCreatePost = [
 exports.userLoginGet = (req, res, next) => {
     res.render("userLoginForm");
 };
+
+exports.userLoginPost = [
+    body("username").trim().escape(),
+    body("password").escape(),
+    (req, res, next) => {
+        passport.authenticate("local", (err, user, info) => {
+            if (err) {
+                return next(err)
+            } else if (!user) {
+                return res.render("userLoginForm", {
+                    persistedRequestBody: info.persistedRequestBody,
+                    error: info.message
+                });
+            }
+            res.redirect("/");
+        })(req, res, next);
+    }
+];
 
 // TODO: consider whether the below three functions are really controllers and if they 
 // should really be in this file
