@@ -1,3 +1,5 @@
+// TODO: consider putting authorisation controllers into separate file
+
 const User = require("../models/user");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
@@ -100,8 +102,6 @@ exports.userLoginPost = [
     }
 ];
 
-// TODO: consider whether the below three functions are really controllers and if they 
-// should really be in this file
 // NOTE: 'done' is a parameter necessitated by the passport middleware in 
 // ../routes/membersOnly.js
 exports.verifyLoginAttempt = async (username, password, done) => {
