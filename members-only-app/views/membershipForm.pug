@@ -7,9 +7,9 @@ block content
 
         p Please log in before trying to become a member
 
-    else if currentUser.status === "admin"
+    else if currentUser.status === "member" || currentUser.status === "admin"
 
-        p You don't need to become a member, you're already an admin!
+        p You don't need to become a member, you already have !{currentUser.status} status!
 
     else
 
