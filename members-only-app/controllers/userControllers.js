@@ -85,16 +85,47 @@ exports.userLoginGet = (req, res, next) => {
 // should really be in this file
 // NOTE: 'done' is a parameter necessitated by the passport middleware in 
 // ../routes/membersOnly.js
-exports.verifyLoginAttempt = (username, password, done) => {
+exports.verifyLoginAttempt = async (username, password, done) => {
     // TODO: implement verifyUserDetails
+    const persistedRequestBody = {
+        username: username,
+        password: password,
+    };
+    try {
+        const userDoc = await User.findOne({ username: username });
+        if (!userDoc) {
+            return done(null, false, {
+                persistedRequestBody,
+                message: "Incorrect username",
+            });
+        }
+        bcrypt.compare(password, userDoc.password, (err, res) => {
+            if (err) {
+                throw err;
+            } else if (res) {
+                return done(null, userDoc);
+            }
+            return done(null, false, {
+                persistedRequestBody,
+                message: "Incorrect password",
+            });
+        });
+    } catch(err) {
+        return done(err);
+    };
 };
 
 exports.userSerializationCallback = (userDoc, done) => {
-    // TODO: implement userSerializationCallback
+    done(null, userDoc.id);
 };
 
-exports.userDesirializationCallback = (userDocId, done) => {
-    // TODO: implement userDeserializationCallback
+exports.userDesirializationCallback = async (userDocId, done) => {
+    try {
+        const userDoc = await User.findById(userDocId);
+        done(null, userDoc);
+    } catch(err) {
+        done(err);
+    };
 };
 
 exports.userStatusMemberGet = (req, res, next) => {
