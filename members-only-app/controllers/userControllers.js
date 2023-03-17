@@ -55,8 +55,8 @@ exports.userCreatePost = [
             });
         }
         try {
-            const founduser = await User.findOne({ username: req.body.username })
-            if (founduser) {
+            const foundUser = await User.findOne({ username: req.body.username })
+            if (foundUser) {
                 return res.render("userSignupForm", {
                     persistedRequestBody: req.body,
                     errorArray: [{msg: "Username taken"}]
