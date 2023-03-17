@@ -84,24 +84,6 @@ exports.userLoginGet = (req, res, next) => {
     res.render("userLoginForm");
 };
 
-exports.userLoginPost = [
-    body("username").trim().escape(),
-    body("password").escape(),
-    (req, res, next) => {
-        passport.authenticate("local", (err, user, info) => {
-            if (err) {
-                return next(err)
-            } else if (!user) {
-                return res.render("userLoginForm", {
-                    persistedRequestBody: info.persistedRequestBody,
-                    error: info.message
-                });
-            }
-            res.redirect("/");
-        })(req, res, next);
-    }
-];
-
 // NOTE: 'done' is a parameter necessitated by the passport middleware in 
 // ../routes/membersOnly.js
 exports.verifyLoginAttempt = async (username, password, done) => {
@@ -133,6 +115,16 @@ exports.verifyLoginAttempt = async (username, password, done) => {
         return done(err);
     };
 };
+
+exports.userLoginPost = [
+    body("username").trim().escape(),
+    body("password").escape(),
+    passport.authenticate("local", {
+        successRedirect: "/become-a-member",
+        failureRedirect: "/log-in",
+        // TODO: set up failureFlash so you can show errors mentioned in verifyLoginAttempt
+    })
+];
 
 exports.userSerializationCallback = (user, done) => {
     done(null, user.id);
