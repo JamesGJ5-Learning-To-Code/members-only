@@ -77,10 +77,8 @@ exports.userCreatePost = [
     }
 ];
 
-
-
 exports.userLoginGet = (req, res, next) => {
-    res.send("TODO: implement userLoginGet");
+    res.render("userLoginForm");
 };
 
 // TODO: consider whether the below three functions are really controllers and if they 
