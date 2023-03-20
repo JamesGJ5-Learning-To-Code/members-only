@@ -88,6 +88,9 @@ exports.userStatusMemberPost = [
         .custom((value) => value === process.env.SECRET_PASSCODE)
         .withMessage("Incorrect passcode"),
     (req, res, next) => {
+        if (res.locals.currentUser === undefined) {
+            return next();
+        }
         const errorResultObject = validationResult(req);
         if (!errorResultObject.isEmpty()) {
             return res.render("membershipForm", {
