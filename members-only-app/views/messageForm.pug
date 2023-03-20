@@ -14,10 +14,19 @@ block content
 
             div 
                 label(for="title") *Title: 
-                input(id="title", type="text", name="title", required)
+                input(id="title", type="text", name="title", required,
+                    value=(persistedRequestBody ? persistedRequestBody.title : ""))
 
             div 
                 label(for="messageBody") *Body: 
-                textarea(id="messageBody", name="messageBody")
+                textarea(
+                    id="messageBody", name="messageBody", required
+                )= persistedRequestBody ? persistedRequestBody.messageBody : ""
 
             button Submit
+
+        if errorArray 
+
+            each error in errorArray 
+
+                p=error.msg
