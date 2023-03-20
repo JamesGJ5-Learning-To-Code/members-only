@@ -34,7 +34,15 @@ exports.messageCreatePost = [
 ];
 
 exports.allMessagesGet = (req, res, next) => {
-    res.send("TODO: implement allMessagesGet");
+    Message.find({})
+        .sort({ createdAt: -1 })
+        .populate("author")
+    .then((messageArray) => {
+        return res.render("messageList", {
+            messageArray
+        });
+    })
+    .catch((err) => next(err));
 };
 
 exports.messageDeletePost = (req, res, next) => {
