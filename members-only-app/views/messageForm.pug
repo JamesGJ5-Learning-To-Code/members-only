@@ -1,0 +1,23 @@
+extends layout 
+
+block content 
+
+    h1 Create Message:
+
+    if currentUser === undefined 
+
+        p Please log in before trying to create a message
+
+    else
+
+        form(action="", method="POST") 
+
+            div 
+                label(for="title") *Title: 
+                input(id="title", type="text", name="title", required)
+
+            div 
+                label(for="messageBody") *Body: 
+                textarea(id="messageBody", name="messageBody")
+
+            button Submit
