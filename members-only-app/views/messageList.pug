@@ -22,3 +22,14 @@ block content
 
                     p By: !{message.author.fullName}
                     p=message.createdAt
+
+                if currentUser !== undefined && currentUser.status === "admin"
+
+                    form(action="delete-message", method="POST") 
+
+                        div 
+
+                            input(type="hidden", name="messageid", required,
+                                value=message.id)
+
+                            button Delete
