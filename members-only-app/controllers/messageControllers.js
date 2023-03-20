@@ -1,7 +1,7 @@
 const Message = require("../models/message");
 
 exports.messageCreateGet = (req, res, next) => {
-    res.send("TODO: implement messageCreateGet");
+    res.render("messageForm")
 };
 
 exports.messageCreatePost = (req, res, next) => {
