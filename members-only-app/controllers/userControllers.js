@@ -82,29 +82,28 @@ exports.userStatusMemberGet = (req, res, next) => {
 };
 
 exports.userStatusMemberPost = [
-    // body("passcode")
-    //     .isLength({ min: 1 })
-    //     .withMessage("Please enter a passcode")
-    //     .custom((value, { req }) => value === process.env.SECRET_PASSCODE)
-    //     .withMessage("Incorrect passcode"),
-    // (req, res, next) => {
-    //     const errorResultObject = validationResult(req);
-    //     if (!errorResultObject.isEmpty()) {
-    //         return res.render("membershipForm", {
-    //             errorArray: errorResultObject.array(),
-    //         })
-    //     }
-    //     console.log(res.locals.currentUser);
-    //     const updatedUser = new User({
-    //         forename: res.locals.currentUser.forename,
-    //         lastName: res.locals.currentUser.lastName,
-    //         username: res.locals.currentUser.username,
-    //         password: res.locals.currentUser.password,
-    //         status: "member",
-    //         _id: res.locals.currentUser.id,
-    //     });
-    //     User.findByIdAndUpdate(res.locals.currentUser.id, updatedUser, {})
-    //     .then(() => res.redirect("/"))
-    //     .catch((err) => next(err));
-    // }
+    body("passcode")
+        .isLength({ min: 1 })
+        .withMessage("Please enter a passcode")
+        .custom((value) => value === process.env.SECRET_PASSCODE)
+        .withMessage("Incorrect passcode"),
+    (req, res, next) => {
+        const errorResultObject = validationResult(req);
+        if (!errorResultObject.isEmpty()) {
+            return res.render("membershipForm", {
+                errorArray: errorResultObject.array(),
+            })
+        }
+        const updatedUser = new User({
+            forename: res.locals.currentUser.forename,
+            lastName: res.locals.currentUser.lastName,
+            username: res.locals.currentUser.username,
+            password: res.locals.currentUser.password,
+            status: "member",
+            _id: res.locals.currentUser.id,
+        });
+        User.findByIdAndUpdate(res.locals.currentUser.id, updatedUser, {})
+        .then(() => res.redirect("/"))
+        .catch((err) => next(err));
+    }
 ];
