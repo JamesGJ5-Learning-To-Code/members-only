@@ -43,7 +43,7 @@ exports.userLoginPost = [
     body("username").trim().escape(),
     body("password").escape(),
     passport.authenticate("local", {
-        successRedirect: "/become-a-member",
+        successRedirect: "/",
         failureRedirect: "/log-in",
         // TODO: set up failureFlash so you can show errors mentioned in verifyLoginAttempt
     })
