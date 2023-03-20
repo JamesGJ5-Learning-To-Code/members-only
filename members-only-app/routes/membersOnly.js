@@ -17,7 +17,7 @@ router.use(session({
 passport.use(new LocalStrategy(authControllers.verifyLoginAttempt));
 
 passport.serializeUser(authControllers.userSerializationCallback);
-passport.deserializeUser(authControllers.userDesirializationCallback);
+passport.deserializeUser(authControllers.userDeserializationCallback);
 
 router.use(passport.initialize());
 router.use(passport.session());

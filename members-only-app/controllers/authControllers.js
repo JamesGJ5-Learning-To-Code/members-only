@@ -53,7 +53,7 @@ exports.userSerializationCallback = (user, done) => {
     done(null, user.id);
 };
 
-exports.userDesirializationCallback = async (userId, done) => {
+exports.userDeserializationCallback = async (userId, done) => {
     try {
         const user = await User.findById(userId);
         done(null, user);
