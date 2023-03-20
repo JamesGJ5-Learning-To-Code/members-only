@@ -33,6 +33,10 @@ exports.messageCreatePost = [
     }
 ];
 
+exports.allMessagesGet = (req, res, next) => {
+    res.send("TODO: implement allMessagesGet");
+};
+
 exports.messageDeletePost = (req, res, next) => {
     res.send("TODO: implement messageDeletePost");
 };

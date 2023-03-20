@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const indexGet = require("../controllers/indexGet");
 const userControllers = require("../controllers/userControllers");
 const messageControllers = require("../controllers/messageControllers");
 const authControllers = require("../controllers/authControllers");
@@ -27,7 +26,7 @@ router.use((req, res, next) => {
     next();
 });
 
-router.get("/", indexGet);
+router.get("/", messageControllers.allMessagesGet);
 
 router.get("/sign-up", userControllers.userCreateGet);
 router.post("/sign-up", userControllers.userCreatePost);
