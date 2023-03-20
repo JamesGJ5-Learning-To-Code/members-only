@@ -8,9 +8,6 @@ const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
-// TODO: Consider doing the passport stuff in here, since it is specific to this portion of 
-// routes only
-
 router.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
