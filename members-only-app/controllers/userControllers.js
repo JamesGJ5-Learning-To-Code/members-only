@@ -1,9 +1,6 @@
-// TODO: consider putting authorisation controllers into separate file
-
 const User = require("../models/user");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
-const passport = require("passport");
 
 exports.userCreateGet = (req, res, next) => {
     res.render("userSignupForm");
@@ -80,69 +77,34 @@ exports.userCreatePost = [
     }
 ];
 
-exports.userLoginGet = (req, res, next) => {
-    res.render("userLoginForm");
-};
-
-// NOTE: 'done' is a parameter necessitated by the passport middleware in 
-// ../routes/membersOnly.js
-exports.verifyLoginAttempt = async (username, password, done) => {
-    // TODO: implement verifyUserDetails
-    const persistedRequestBody = {
-        username: username,
-        password: password,
-    };
-    try {
-        const user = await User.findOne({ username: username });
-        if (!user) {
-            return done(null, false, {
-                persistedRequestBody,
-                message: "Incorrect username",
-            });
-        }
-        bcrypt.compare(password, user.password, (err, res) => {
-            if (err) {
-                throw err;
-            } else if (res) {
-                return done(null, user);
-            }
-            return done(null, false, {
-                persistedRequestBody,
-                message: "Incorrect password",
-            });
-        });
-    } catch(err) {
-        return done(err);
-    };
-};
-
-exports.userLoginPost = [
-    body("username").trim().escape(),
-    body("password").escape(),
-    passport.authenticate("local", {
-        successRedirect: "/become-a-member",
-        failureRedirect: "/log-in",
-        // TODO: set up failureFlash so you can show errors mentioned in verifyLoginAttempt
-    })
-];
-
-exports.userSerializationCallback = (user, done) => {
-    done(null, user.id);
-};
-
-exports.userDesirializationCallback = async (userId, done) => {
-    try {
-        const user = await User.findById(userId);
-        done(null, user);
-    } catch(err) {
-        done(err);
-    };
-};
-
 exports.userStatusMemberGet = (req, res, next) => {
     res.render("membershipForm");
 };
 
-exports.userStatusMemberPost = (req, res, next) => {
-    res.send("TODO: implement userStatusMemberPost");
-};
+exports.userStatusMemberPost = [
+    // body("passcode")
+    //     .isLength({ min: 1 })
+    //     .withMessage("Please enter a passcode")
+    //     .custom((value, { req }) => value === process.env.SECRET_PASSCODE)
+    //     .withMessage("Incorrect passcode"),
+    // (req, res, next) => {
+    //     const errorResultObject = validationResult(req);
+    //     if (!errorResultObject.isEmpty()) {
+    //         return res.render("membershipForm", {
+    //             errorArray: errorResultObject.array(),
+    //         })
+    //     }
+    //     console.log(res.locals.currentUser);
+    //     const updatedUser = new User({
+    //         forename: res.locals.currentUser.forename,
+    //         lastName: res.locals.currentUser.lastName,
+    //         username: res.locals.currentUser.username,
+    //         password: res.locals.currentUser.password,
+    //         status: "member",
+    //         _id: res.locals.currentUser.id,
+    //     });
+    //     User.findByIdAndUpdate(res.locals.currentUser.id, updatedUser, {})
+    //     .then(() => res.redirect("/"))
+    //     .catch((err) => next(err));
+    // }
+];

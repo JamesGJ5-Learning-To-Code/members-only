@@ -3,6 +3,7 @@ const router = express.Router();
 const indexGet = require("../controllers/indexGet");
 const userControllers = require("../controllers/userControllers");
 const messageControllers = require("../controllers/messageControllers");
+const authControllers = require("../controllers/authControllers");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
@@ -22,10 +23,10 @@ router.use(session({
     },
 }));
 
-passport.use(new LocalStrategy(userControllers.verifyLoginAttempt));
+passport.use(new LocalStrategy(authControllers.verifyLoginAttempt));
 
-passport.serializeUser(userControllers.userSerializationCallback);
-passport.deserializeUser(userControllers.userDesirializationCallback);
+passport.serializeUser(authControllers.userSerializationCallback);
+passport.deserializeUser(authControllers.userDesirializationCallback);
 
 router.use(passport.initialize());
 router.use(passport.session());
@@ -40,9 +41,9 @@ router.get("/", indexGet);
 router.get("/sign-up", userControllers.userCreateGet);
 router.post("/sign-up", userControllers.userCreatePost);
 
-router.get("/log-in", userControllers.userLoginGet);
+router.get("/log-in", authControllers.userLoginGet);
 // TODO: consider refactoring the below callback into userControllers.js
-router.post("/log-in", userControllers.userLoginPost);
+router.post("/log-in", authControllers.userLoginPost);
 
 router.get("/become-a-member", userControllers.userStatusMemberGet);
 router.post("/become-a-member", userControllers.userStatusMemberPost);
