@@ -46,5 +46,10 @@ exports.allMessagesGet = (req, res, next) => {
 };
 
 exports.messageDeletePost = (req, res, next) => {
-    res.send("TODO: implement messageDeletePost");
+    if (res.locals.currentUser === undefined || res.locals.currentUser.status !== "admin") {
+        return next();
+    }
+    Message.findByIdAndRemove(req.body.messageid)
+    .then(() => res.redirect("/"))
+    .catch((err) => next(err));
 };
