@@ -7,7 +7,6 @@ const authControllers = require("../controllers/authControllers");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const { body } = require("express-validator");
 
 // TODO: Consider doing the passport stuff in here, since it is specific to this portion of 
 // routes only
