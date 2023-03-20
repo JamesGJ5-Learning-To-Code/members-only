@@ -6,13 +6,12 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 const mongoose = require("mongoose");
+const membersOnlyRouter = require("./routes/membersOnly");
 
 main().catch(err => console.log(err));
 async function main() {
   await mongoose.connect(process.env.MONGO_DB_CONNECTION_STRING);
 }
-
-const membersOnlyRouter = require("./routes/membersOnly");
 
 var app = express();
 
