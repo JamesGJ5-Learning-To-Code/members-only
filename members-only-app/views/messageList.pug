@@ -1,0 +1,24 @@
+//- TODO: enable creation of a new page after each of a certain number of messages is displayed
+
+extends layout 
+
+block content 
+
+    h1 Messages:
+
+    if messageArray.length === 0
+
+        p No messages here!
+
+    else 
+        
+        each message in messageArray 
+
+            div 
+                h2=message.title
+                p=message.messageBody
+
+                if currentUser !== undefined && ["member", "admin"].includes(currentUser.status)
+
+                    p By: !{message.author.fullName}
+                    p=message.createdAt
