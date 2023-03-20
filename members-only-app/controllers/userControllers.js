@@ -88,15 +88,16 @@ exports.userStatusMemberPost = [
         .custom((value) => value === process.env.SECRET_PASSCODE)
         .withMessage("Incorrect passcode"),
     (req, res, next) => {
-        if (res.locals.currentUser === undefined) {
-            return next();
-        }
         const errorResultObject = validationResult(req);
         if (!errorResultObject.isEmpty()) {
             return res.render("membershipForm", {
                 errorArray: errorResultObject.array(),
             })
         }
+        // TODO: if use of res.locals.currentUser below is removed, consider adding a 
+        // statement at the start of this piece of middleware that simply ends this one 
+        // and calls the next (which will be the error middleware in app.js) if user is 
+        // not logged in, thus preventing the update
         const updatedUser = new User({
             forename: res.locals.currentUser.forename,
             lastName: res.locals.currentUser.lastName,
